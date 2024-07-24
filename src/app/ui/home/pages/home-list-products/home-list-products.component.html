@@ -1,11 +1,15 @@
 <main>
   <div class="wrapper-parent">
     <div class="wrapper-top">
-      <div style="width: 30%">
+      <div style="width: 30%; height: 100%">
         <input-custom name="search" placeholder="Buscar..." />
       </div>
-      <div style="width: 30%">
-        <input-custom name="asdsd" placeholder="asdasdasdsa" />
+      <div style="width: max-content">
+        <button-custom
+          label="Agregar"
+          [onClick]="onClickButton"
+          [style]="{ padding: '1rem 1.3rem 1rem 1.3rem' }"
+        ></button-custom>
       </div>
     </div>
 

@@ -12,5 +12,6 @@ export class InputCustomComponent {
   @Input() placeholder: string = '';
   @Input() style: string = '';
   @Input() label: string = '';
+  @Input() type: string = 'text';
   @Input() isDisable: boolean = false;
 }

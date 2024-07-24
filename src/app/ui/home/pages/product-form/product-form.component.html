@@ -3,7 +3,6 @@
     <div class="header-form">
       <h2>Formulario de registro</h2>
     </div>
-
     <form>
       <input-custom label="ID" name="id" />
       <input-custom label="Nombre" name="name" />
@@ -13,9 +12,39 @@
         label="Fecha Liberación"
         name=""
         placeholder="Buscar..."
-        [isDisable]="true"
+        type="date"
       />
-      <input-custom label="Fecha Revisión" placeholder="Buscar..." />
+      <input-custom
+        label="Fecha Revisión"
+        type="date"
+        [isDisable]="true"
+        placeholder="Buscar..."
+      />
     </form>
+
+    <div class="footer-form">
+      <div style="width: max-content">
+        <button-custom
+          label="Reiniciar"
+          [style]="{
+            padding: '1rem 1.3rem 1rem 1.3rem',
+            background: '#eaecf2'
+          }"
+        ></button-custom>
+      </div>
+      <div style="width: max-content">
+        <button-custom
+          label="Enviar"
+          [style]="{ padding: '1rem 1.3rem 1rem 1.3rem' }"
+        ></button-custom>
+      </div>
+    </div>
+  </div>
+  <div style="width: max-content; margin-top: 1rem">
+    <button-custom
+      [onClick]="onClick"
+      label="Volver al listado de productos"
+      [style]="{ padding: '1rem 1.3rem 1rem 1.3rem' }"
+    ></button-custom>
   </div>
 </main>
