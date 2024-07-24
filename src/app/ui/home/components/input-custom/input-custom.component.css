@@ -16,3 +16,11 @@ label {
 .wrapper-input-custom {
   background-color: white;
 }
+
+p {
+  color: rgb(219, 14, 14);
+}
+
+.inputerrors {
+  border: 2px solid rgb(219, 14, 14) !important;
+}

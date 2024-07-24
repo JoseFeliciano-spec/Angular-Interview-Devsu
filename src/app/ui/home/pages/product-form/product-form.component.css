@@ -25,6 +25,7 @@ form {
   padding: 2rem 1.2rem 1.2rem 2rem;
   background-color: white;
   display: grid;
+  max-width: 600px;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.5rem;
 }

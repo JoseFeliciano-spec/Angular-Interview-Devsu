@@ -3,11 +3,11 @@ import { ControlValueAccessor } from '@angular/forms';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { forwardRef } from '@angular/core';
 import { Input } from '@angular/core';
-
+import { JsonPipe } from '@angular/common';
 @Component({
   selector: 'input-custom',
   standalone: true,
-  imports: [],
+  imports: [JsonPipe],
   templateUrl: './input-custom.component.html',
   styleUrl: './input-custom.component.css',
   providers: [
@@ -44,9 +44,17 @@ export class InputCustomComponent implements ControlValueAccessor {
     this.value = inputElement.value;
     this.onChange(this.value);
   }
+
+  get errorClass() {
+    if(this.errors.length >0 && this.errors !== undefined){
+      return "inputerrors"
+    }
+    return '';
+  }
   @Input() label: string = '';
   @Input() type: string = 'text';
   @Input() name: string = '';
   @Input() placeholder: string = '';
   @Input() isDisable: boolean = false;
+  @Input() errors: any;
 }

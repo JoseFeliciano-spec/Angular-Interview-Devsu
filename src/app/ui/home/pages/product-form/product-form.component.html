@@ -4,13 +4,23 @@
       <h2>Formulario de registro</h2>
     </div>
     <form [formGroup]="form">
-      <input-custom label="ID" formControlName="id"> </input-custom>
-      <input-custom label="Nombre" formControlName="name"></input-custom>
+      <input-custom label="ID" formControlName="id" errors="{{ errorsId }}">
+      </input-custom>
+      <input-custom
+        label="Nombre"
+        formControlName="name"
+        errors="{{ errorsName }}"
+      ></input-custom>
       <input-custom
         label="Descripción"
         formControlName="description"
+        errors="{{ errorsDescription }}"
       ></input-custom>
-      <input-custom label="Logo" formControlName="logo"></input-custom>
+      <input-custom
+        label="Logo"
+        formControlName="logo"
+        errors="{{ errorsLogo }}"
+      ></input-custom>
       <!-- <input-custom
         label="Fecha Liberación"
         name=""
