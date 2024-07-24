@@ -1,0 +1,11 @@
+@if (label.length > 0) {
+<label for="{{ name }}">
+  {{ label }}
+</label>
+}
+
+<input
+  name="{{ name }}"
+  [disabled]="isDisable"
+  placeholder="{{ placeholder }}"
+/>

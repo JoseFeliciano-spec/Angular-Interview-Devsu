@@ -1,25 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Observable } from 'rxjs';
-import { GetProductsCase } from './domain/usecases/get-products-use-case';
-import { iProductResponse, Product } from './domain/models/Products/Products';
+import { GetProductsCase } from '@/app/domain/usecases/get-products-use-case';
+import {
+  iProductResponse,
+  Product,
+} from '@/app/domain/models/Products/Products';
+import { InputCustomComponent } from '@/app/ui/home/components/input-custom/input-custom.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, InputCustomComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent implements OnInit {
-  constructor(private _getProductsCases: GetProductsCase) {}
-  response$: Observable<iProductResponse> | undefined;
-  datos: Product[] | undefined;
-  title = 'Response';
-  ngOnInit(): void {
-    this.response$ = this._getProductsCases.getAllProducts();
-    this.response$.subscribe((data: iProductResponse) => {
-      this.datos = data.data;
-    });
-  }
-}
+export class AppComponent {}
