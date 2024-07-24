@@ -1,0 +1,30 @@
+main {
+  width: 100%;
+  display: flex;
+  margin-top: 4rem;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.wrapper-form {
+  min-width: 500px;
+  background-color: white;
+}
+
+.header-form {
+  height: 100px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px black solid;
+}
+
+form {
+  padding: 2rem 1.2rem 1.2rem 2rem;
+  background-color: white;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}

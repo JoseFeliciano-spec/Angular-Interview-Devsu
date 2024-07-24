@@ -2,39 +2,4 @@
   <h1>Banco</h1>
 </header>
 
-<main>
-  <div class="wrapper">
-    <table class="styled-table">
-      <thead>
-        <tr>
-          <th>Logo</th>
-          <th>Nombre del producto</th>
-          <th>Descripción</th>
-          <th>Fecha de liberación</th>
-          <th>Fecha de restauración</th>
-        </tr>
-      </thead>
-      <tbody>
-        @for (item of datos; track $index) {
-        <tr>
-          <td>
-            {{ item.logo }}
-          </td>
-          <td>
-            {{ item.name }}
-          </td>
-          <td>
-            {{ item.description }}
-          </td>
-          <td>
-            {{ item.date_release }}
-          </td>
-          <td>
-            {{ item.date_revision }}
-          </td>
-        </tr>
-        }
-      </tbody>
-    </table>
-  </div>
-</main>
+<router-outlet></router-outlet>
