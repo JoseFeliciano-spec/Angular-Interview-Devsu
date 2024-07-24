@@ -7,6 +7,6 @@ export class Product {
   name!: string;
   description!: string;
   logo!: string;
-  data_release!: string;
+  date_release!: string;
   date_revision!: string;
 }
