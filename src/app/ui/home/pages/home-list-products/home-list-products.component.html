@@ -1,9 +1,9 @@
 <main>
   <div class="wrapper-parent">
     <div class="wrapper-top">
-      <div style="width: 30%; height: 100%">
-        <input-custom name="search" placeholder="Buscar..." />
-      </div>
+      <form [formGroup]="form" style="width: 30%; height: 100%">
+        <input-custom formControlName="search" placeholder="Buscar..." />
+      </form>
       <div style="width: max-content">
         <button-custom
           label="Agregar"

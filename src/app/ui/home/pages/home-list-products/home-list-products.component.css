@@ -13,7 +13,7 @@ main {
 
 .wrapper-top {
   display: flex;
-  min-width: 100%;
+  width: 100%;
   margin-bottom: 1rem;
   align-items: center;
   justify-content: space-between;

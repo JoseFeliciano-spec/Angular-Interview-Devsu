@@ -46,7 +46,7 @@ export class InputCustomComponent implements ControlValueAccessor {
   }
 
   get errorClass() {
-    if(this.errors.length >0 && this.errors !== undefined){
+    if(this.errors?.length >0 && this.errors !== undefined){
       return "inputerrors"
     }
     return '';
