@@ -25,7 +25,10 @@
           </tr>
         </thead>
         <tbody>
-          @for (item of datos; track $index) {
+          @if (this.productStore.status() === "Loading") {
+          <span>Cargando...</span>
+          } @else if (this.productStore.status() === "Loaded") { @for (item of
+          this.productStore.productsList(); track $index) {
           <tr>
             <td>
               {{ item.logo }}
@@ -43,7 +46,7 @@
               {{ item.date_revision }}
             </td>
           </tr>
-          }
+          } }
         </tbody>
       </table>
     </div>

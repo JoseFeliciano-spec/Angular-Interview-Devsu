@@ -1,11 +1,12 @@
 @if (label.length > 0) {
-<label for="{{ name }}">
+<label>
   {{ label }}
 </label>
 }
 <input
-  name="{{ name }}"
   type="{{ type }}"
+  (input)="onInput($event)"
+  [value]="value"
   [disabled]="isDisable"
   placeholder="{{ placeholder }}"
 />

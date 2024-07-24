@@ -3,12 +3,15 @@
     <div class="header-form">
       <h2>Formulario de registro</h2>
     </div>
-    <form>
-      <input-custom label="ID" name="id" />
-      <input-custom label="Nombre" name="name" />
-      <input-custom label="Descripción" name="description" />
-      <input-custom label="Logo" name="logo" />
+    <form [formGroup]="form">
+      <input-custom label="ID" formControlName="id"> </input-custom>
+      <input-custom label="Nombre" formControlName="name"></input-custom>
       <input-custom
+        label="Descripción"
+        formControlName="description"
+      ></input-custom>
+      <input-custom label="Logo" formControlName="logo"></input-custom>
+      <!-- <input-custom
         label="Fecha Liberación"
         name=""
         placeholder="Buscar..."
@@ -19,7 +22,7 @@
         type="date"
         [isDisable]="true"
         placeholder="Buscar..."
-      />
+      /> -->
     </form>
 
     <div class="footer-form">
@@ -34,6 +37,7 @@
       </div>
       <div style="width: max-content">
         <button-custom
+          [onClick]="onSubmit"
           label="Enviar"
           [style]="{ padding: '1rem 1.3rem 1rem 1.3rem' }"
         ></button-custom>
@@ -47,4 +51,8 @@
       [style]="{ padding: '1rem 1.3rem 1rem 1.3rem' }"
     ></button-custom>
   </div>
+
+  <code>
+    <pre>{{ this.productStore.formProducts | json }}</pre>
+  </code>
 </main>
