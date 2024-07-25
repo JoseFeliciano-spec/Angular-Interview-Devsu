@@ -14,51 +14,53 @@
     </div>
 
     <div class="wrapper">
-      <table class="styled-table">
-        <thead>
-          <tr>
-            <th>Logo</th>
-            <th>Nombre del producto</th>
-            <th>Descripción</th>
-            <th>Fecha de liberación</th>
-            <th>Fecha de restauración</th>
-          </tr>
-        </thead>
-        <tbody>
-          @if (this.productStore.status() === "Loading") {
-          <span>Cargando...</span>
-          } @else if (this.productStore.status() === "Loaded") { @for (item of
-          paginatedItems; track $index) {
-          <tr>
-            <td>
-              {{ item.logo }}
-            </td>
-            <td>
-              {{ item.name }}
-            </td>
-            <td>
-              {{ item.description }}
-            </td>
-            <td>
-              {{ item.date_release }}
-            </td>
-            <td>
-              {{ item.date_revision }}
-            </td>
-            <td>
-              <action-popper [id]="'popper_' + $index">
-                <option (click)="onSubmitUpdate(item)" value="">
-                  Actualizar
-                </option>
-                <option (click)="onOpenRemoveId(item)" value="">
-                  Eliminar
-                </option>
-              </action-popper>
-            </td>
-          </tr>
-          } }
-        </tbody>
-      </table>
+      <div class="wrapper-table">
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th>Logo</th>
+              <th>Nombre del producto</th>
+              <th>Descripción</th>
+              <th>Fecha de liberación</th>
+              <th>Fecha de restauración</th>
+            </tr>
+          </thead>
+          <tbody>
+            @if (this.productStore.status() === "Loading") {
+            <span>Cargando...</span>
+            } @else if (this.productStore.status() === "Loaded") { @for (item of
+            paginatedItems; track $index) {
+            <tr>
+              <td>
+                {{ item.logo }}
+              </td>
+              <td>
+                {{ item.name }}
+              </td>
+              <td>
+                {{ item.description }}
+              </td>
+              <td>
+                {{ item.date_release }}
+              </td>
+              <td>
+                {{ item.date_revision }}
+              </td>
+              <td>
+                <action-popper [id]="'popper_' + $index">
+                  <option (click)="onSubmitUpdate(item)" value="">
+                    Actualizar
+                  </option>
+                  <option (click)="onOpenRemoveId(item)" value="">
+                    Eliminar
+                  </option>
+                </action-popper>
+              </td>
+            </tr>
+            } }
+          </tbody>
+        </table>
+      </div>
 
       <div class="footer-table">
         <p>Resultados</p>
@@ -97,13 +99,6 @@
     </div>
   </div>
 </main>
-
-<code>
-  <pre>
-  {{ form.value | json }}
-</pre
-  >
-</code>
 
 <modal [isOpen]="modalIsOpen" (close)="closeModal()">
   <div class="content-delete-product">

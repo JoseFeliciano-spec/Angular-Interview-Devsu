@@ -10,6 +10,10 @@ main {
 .wrapper-form {
   min-width: 500px;
   background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .header-form {
@@ -26,8 +30,14 @@ form {
   background-color: white;
   display: grid;
   max-width: 600px;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(1, minmax(0, 1fr));
   gap: 1.5rem;
+}
+
+@media screen and (min-width: 800px) {
+  form {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
 }
 
 .footer-form {

@@ -17,13 +17,12 @@ option:hover {
 }
 
 .wrapper-parent {
-  min-width: 400px;
-  width: max-content;
+  min-width: 200px;
 }
 
 .wrapper-top {
   display: flex;
-  width: 100%;
+  width: 90%;
   margin-bottom: 1rem;
   align-items: center;
   justify-content: space-between;
@@ -31,7 +30,7 @@ option:hover {
 
 .wrapper {
   padding: 0.5rem 2rem 4rem 2rem;
-  min-width: 400px;
+  min-width: 300px;
   background-color: #ffffff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 }
@@ -81,6 +80,17 @@ option:hover {
   width: 100%;
   justify-content: space-between;
   align-items: center;
+  flex-direction: column;
+}
+
+.wrapper-table {
+  overflow-x: scroll;
+}
+
+@media screen and (min-width: 800px) {
+  .footer-table {
+    flex-direction: row;
+  }
 }
 
 select {
