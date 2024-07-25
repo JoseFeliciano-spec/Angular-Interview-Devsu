@@ -13,6 +13,10 @@ export class ProductsApiService extends ProductGateway {
   }
 
   getAllProducts(): Observable<iProductResponse> {
-    return this.http.get<iProductResponse>("/api/bp/products");
+    return this.http.get<iProductResponse>('/api/bp/products');
+  }
+
+  getIdProduct(id: string): Observable<boolean> {
+    return this.http.get<boolean>(`/api/bp/products/verification/${id}`);
   }
 }

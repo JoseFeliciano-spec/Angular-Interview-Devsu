@@ -4,7 +4,12 @@
       <h2>Formulario de registro</h2>
     </div>
     <form [formGroup]="form">
-      <input-custom label="ID" formControlName="id" errors="{{ errorsId }}">
+      <input-custom
+        label="ID"
+        formControlName="id"
+        [onBlur]="onBlur"
+        errors="{{ errorsId }}"
+      >
       </input-custom>
       <input-custom
         label="Nombre"
@@ -21,18 +26,19 @@
         formControlName="logo"
         errors="{{ errorsLogo }}"
       ></input-custom>
-      <!-- <input-custom
+      <input-custom
         label="Fecha Liberación"
-        name=""
-        placeholder="Buscar..."
+        formControlName="date_release"
+        errors="{{ errorsDateRelease }}"
         type="date"
       />
       <input-custom
         label="Fecha Revisión"
         type="date"
-        [isDisable]="true"
+        formControlName="date_revision"
+        [isDisabled]="true"
         placeholder="Buscar..."
-      /> -->
+      />
     </form>
 
     <div class="footer-form">

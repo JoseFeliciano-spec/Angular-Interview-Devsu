@@ -6,12 +6,14 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-
 import { JsonPipe } from '@angular/common';
+import dayjs from 'dayjs';
+import { Observable } from 'rxjs';
 import { InputCustomComponent } from '@/app/ui/home/components/input-custom/input-custom.component';
 import { ButtonCustomComponent } from '@/app/ui/home/components/button-custom/button-custom.component';
 import { ProductsStore } from '@/app/ui/store/products.store';
 import { unstructuredErrors } from '@/app/ui/utils/unstructuredErrors';
+import { GetProductsCase } from '@/app/domain/usecases/get-products-use-case';
 
 @Component({
   selector: 'app-product-form',
@@ -27,6 +29,9 @@ import { unstructuredErrors } from '@/app/ui/utils/unstructuredErrors';
 })
 export class ProductFormComponent {
   readonly productStore = inject(ProductsStore);
+  response!: Observable<boolean>;
+  notRepeatId: boolean = false;
+
   form: FormGroup = new FormGroup({
     id: new FormControl(
       '',
@@ -53,11 +58,21 @@ export class ProductFormComponent {
       ])
     ),
     logo: new FormControl('', [Validators.required]),
+    date_release: new FormControl(dayjs().format('YYYY-MM-DD'), [
+      Validators.required,
+    ]),
+    date_revision: new FormControl(dayjs().format('YYYY-MM-DD')),
   });
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private productServices: GetProductsCase
+  ) {}
 
-  get errorsId() {
+  get errorsId(): string {
+    if (this.notRepeatId === true) {
+      return 'Este ID es inválido';
+    }
     const variablesError: any = {
       minlength: 'El valor mínimo debe de ser de 3 caracteres',
       maxlength: 'El valor máximo es de 10 caracteres',
@@ -100,8 +115,29 @@ export class ProductFormComponent {
     });
   }
 
+  get errorsDateRelease() {
+    const variablesError: any = {
+      required: 'Este campo es requerido',
+    };
+    return unstructuredErrors({
+      variablesError,
+      form: this.form,
+      key: 'date_release',
+    });
+  }
+
   onSubmit = () => {
-    console.log(this.form.get('name')?.errors);
+    console.log(this.form.get('id')?.value);
+  };
+
+  onBlur = () => {
+    this.response = this.productServices.getIdProduct(
+      this.form.get('id')?.value
+    );
+
+    this.response.subscribe((data) => {
+      this.notRepeatId = data;
+    });
   };
 
   onClick = () => {

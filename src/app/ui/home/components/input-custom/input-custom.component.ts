@@ -46,8 +46,8 @@ export class InputCustomComponent implements ControlValueAccessor {
   }
 
   get errorClass() {
-    if(this.errors?.length >0 && this.errors !== undefined){
-      return "inputerrors"
+    if (this.errors?.length > 0 && this.errors !== undefined) {
+      return 'inputerrors';
     }
     return '';
   }
@@ -55,6 +55,7 @@ export class InputCustomComponent implements ControlValueAccessor {
   @Input() type: string = 'text';
   @Input() name: string = '';
   @Input() placeholder: string = '';
-  @Input() isDisable: boolean = false;
   @Input() errors: any;
+  @Input() isDisabled: boolean = false;
+  @Input() onBlur = () => {};
 }

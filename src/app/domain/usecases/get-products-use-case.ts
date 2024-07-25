@@ -6,11 +6,14 @@ import { iProductResponse } from '@/app/domain/models/Products/Products';
 @Injectable({
   providedIn: 'root',
 })
-
 export class GetProductsCase {
   constructor(private _productGateway: ProductGateway) {}
 
   getAllProducts(): Observable<iProductResponse> {
     return this._productGateway.getAllProducts();
+  }
+
+  getIdProduct(id: string): Observable<boolean> {
+    return this._productGateway.getIdProduct(id);
   }
 }
