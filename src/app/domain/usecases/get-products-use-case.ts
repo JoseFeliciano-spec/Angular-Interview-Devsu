@@ -24,4 +24,12 @@ export class GetProductsCase {
   createProduct(product: Product): Observable<iProductCreateResponse> {
     return this._productGateway.createProduct(product);
   }
+
+  deleteProduct(id: String): Observable<{ message: string }> {
+    return this._productGateway.deleteProduct(id);
+  }
+
+  updateProduct(product: Product): Observable<iProductCreateResponse> {
+    return this._productGateway.updateProduct(product);
+  }
 }

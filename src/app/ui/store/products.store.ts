@@ -14,24 +14,20 @@ import { GetProductsCase } from '@/app/domain/usecases/get-products-use-case';
 interface IProductsState {
   products: Product[];
   status: 'Loading' | 'Loaded' | 'Error';
-  formProducts?: {
-    id?: { value: string; error: string | null };
-    name?: { value: string; error: string | null };
-    description?: { value: string; error: string | null };
-    logo?: { value: string; error: string | null };
-  };
+  product: Product | undefined;
 }
 
 const initialState: IProductsState = {
   products: [],
   status: 'Loading',
-  formProducts: {},
+  product: undefined,
 };
 
 export const ProductsStore = signalStore(
   withState(initialState),
-  withComputed(({ products }) => ({
+  withComputed(({ products, product }) => ({
     productsList: computed(() => products()),
+    productIndividual: computed(() => product()),
   })),
   withMethods((store, productService = inject(GetProductsCase)) => ({
     loadProducts: rxMethod(
@@ -49,7 +45,6 @@ export const ProductsStore = signalStore(
         })
       )
     ),
-    setValue: (index: 'formProducts' | 'status' | 'products', value: any) =>
-      patchState(store, { [index]: value }),
+    setValueProduct: (value: Product | undefined) => patchState(store, { product: value }),
   }))
 );

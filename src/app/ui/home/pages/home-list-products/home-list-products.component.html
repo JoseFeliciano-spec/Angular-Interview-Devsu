@@ -46,9 +46,13 @@
               {{ item.date_revision }}
             </td>
             <td>
-              <action-popper [id]="'popper_' + $index"> 
-                <option value="">Actualizar</option>
-                <option value="">Eliminar</option>
+              <action-popper [id]="'popper_' + $index">
+                <option (click)="onSubmitUpdate(item)" value="">
+                  Actualizar
+                </option>
+                <option (click)="onOpenRemoveId(item)" value="">
+                  Eliminar
+                </option>
               </action-popper>
             </td>
           </tr>
@@ -58,3 +62,31 @@
     </div>
   </div>
 </main>
+
+<modal [isOpen]="modalIsOpen" (close)="closeModal()">
+  <div class="content-delete-product">
+    <p class="title-delete-product">
+      ¿Estás seguro de eliminar el producto
+      {{ productStore.productIndividual()?.name }}?.
+    </p>
+    <div class="content-delete-product-footer">
+      <div style="width: 40%">
+        <button-custom
+          label="Cancelar"
+          [onClick]="closeModal"
+          [style]="{
+            padding: '1rem 1.3rem 1rem 1.3rem',
+            background: '#eaecf2'
+          }"
+        ></button-custom>
+      </div>
+      <div style="width: 40%">
+        <button-custom
+          label="Confirmar"
+          [onClick]="onSubmitDelete"
+          [style]="{ padding: '1rem 1.3rem 1rem 1.3rem' }"
+        ></button-custom>
+      </div>
+    </div>
+  </div>
+</modal>

@@ -1,12 +1,16 @@
 <main>
   <div class="wrapper-form">
     <div class="header-form">
-      <h2>Formulario de registro</h2>
+      <h2>
+        @if (formUpdateActive) { Formulario de actualización}@else { Formulario
+        de registro }
+      </h2>
     </div>
     <form [formGroup]="form">
       <input-custom
         label="ID"
         formControlName="id"
+        [isDisabled]="formUpdateActive"
         [onBlur]="onBlur"
         errors="{{ errorsId }}"
       >
@@ -43,6 +47,16 @@
 
     <div class="footer-form">
       <div style="width: max-content">
+        @if (formUpdateActive) {
+        <button-custom
+          label="Volver atrás"
+          [onClick]="onBack"
+          [style]="{
+            padding: '1rem 1.3rem 1rem 1.3rem',
+            background: '#eaecf2'
+          }"
+        ></button-custom>
+        } @else {
         <button-custom
           label="Reiniciar"
           [onClick]="onReset"
@@ -51,12 +65,13 @@
             background: '#eaecf2'
           }"
         ></button-custom>
+        }
       </div>
       <div style="width: max-content">
         <button-custom
           [onClick]="onSubmit"
           [isDisabled]="this.form.invalid || this.notRepeatId"
-          label="Enviar"
+          label="{{ getLabelSend }}"
           [style]="{ padding: '1rem 1.3rem 1rem 1.3rem' }"
         ></button-custom>
       </div>
@@ -69,8 +84,4 @@
       [style]="{ padding: '1rem 1.3rem 1rem 1.3rem' }"
     ></button-custom>
   </div>
-
-  <code>
-    <pre>{{ this.productStore.formProducts | json }}</pre>
-  </code>
 </main>

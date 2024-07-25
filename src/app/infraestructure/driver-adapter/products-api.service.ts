@@ -27,4 +27,13 @@ export class ProductsApiService extends ProductGateway {
   createProduct(product: Product): Observable<iProductCreateResponse> {
     return this.http.post<iProductCreateResponse>('/api/bp/products', product);
   }
+
+  deleteProduct(id: String): Observable<{ message: string }> {
+    return this.http.delete<{ message: string }>(`/api/bp/products/${id}`);
+  }
+
+  updateProduct(product: Product): Observable<iProductCreateResponse> {
+    const { id, ...res } = product;
+    return this.http.put<iProductCreateResponse>(`/api/bp/products/${id}`, res);
+  }
 }

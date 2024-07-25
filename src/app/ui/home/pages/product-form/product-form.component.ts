@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {
   FormControl,
@@ -14,6 +14,7 @@ import { ButtonCustomComponent } from '@/app/ui/home/components/button-custom/bu
 import { ProductsStore } from '@/app/ui/store/products.store';
 import { unstructuredErrors } from '@/app/ui/utils/unstructuredErrors';
 import { GetProductsCase } from '@/app/domain/usecases/get-products-use-case';
+import { Product } from '@/app/domain/models/Products/Products';
 
 @Component({
   selector: 'app-product-form',
@@ -27,10 +28,11 @@ import { GetProductsCase } from '@/app/domain/usecases/get-products-use-case';
   templateUrl: './product-form.component.html',
   styleUrl: './product-form.component.css',
 })
-export class ProductFormComponent {
+export class ProductFormComponent implements OnInit {
   readonly productStore = inject(ProductsStore);
   response!: Observable<boolean>;
   notRepeatId: boolean = false;
+  formUpdateActive: boolean = false;
 
   form: FormGroup = new FormGroup({
     id: new FormControl(
@@ -68,6 +70,18 @@ export class ProductFormComponent {
     private router: Router,
     private productServices: GetProductsCase
   ) {}
+
+  ngOnInit(): void {
+    if (!(this.router.url === '/actualizar-producto')) {
+      return;
+    }
+    if (this.productStore.productIndividual() === undefined) {
+      this.router.navigateByUrl('/');
+    }
+    this.formUpdateActive = true;
+    this.notRepeatId = false;
+    this.form.setValue({ ...this.productStore.productIndividual() });
+  }
 
   get errorsId(): string {
     if (this.notRepeatId === true) {
@@ -126,11 +140,33 @@ export class ProductFormComponent {
     });
   }
 
+  get getLabelSend() {
+    return this.formUpdateActive ? 'Actualizar' : 'Enviar';
+  }
+
   onSubmit = () => {
+    if (this.formUpdateActive) {
+      this.onSubmitUpdate();
+    } else {
+      this.onSubmitCreate();
+    }
+  };
+
+  onSubmitCreate = () => {
     this.productServices.createProduct(this.form.value).subscribe((data) => {
       alert(data?.message);
       this.form.reset();
       this.productStore.loadProducts(null);
+    });
+  };
+
+  onSubmitUpdate = () => {
+    this.productServices.updateProduct(this.form.value).subscribe((data) => {
+      this.productStore.setValueProduct(undefined);
+      this.productStore.loadProducts(null);
+      this.form.reset();
+      this.router.navigateByUrl('/');
+      alert(data?.message);
     });
   };
 
@@ -146,6 +182,10 @@ export class ProductFormComponent {
 
   onReset = () => {
     this.form.reset();
+  };
+
+  onBack = () => {
+    this.router.navigateByUrl('/');
   };
 
   onClick = () => {

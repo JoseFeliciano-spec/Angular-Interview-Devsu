@@ -11,4 +11,8 @@ export const routes: Routes = [
     path: 'crear-producto',
     component: ProductFormComponent,
   },
+  {
+    path: 'actualizar-producto',
+    component: ProductFormComponent,
+  },
 ];

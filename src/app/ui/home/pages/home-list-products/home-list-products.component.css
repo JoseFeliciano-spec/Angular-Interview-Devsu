@@ -56,7 +56,6 @@ option:hover {
 
 .styled-table th,
 .styled-table td {
-  /* padding: 12px 15px; */
   padding: 1.2rem;
   text-align: center;
 }
@@ -64,4 +63,15 @@ option:hover {
 .styled-table tbody tr td {
   border-bottom: 1px solid #dddddd;
   background-color: #ffffff;
+}
+
+.content-delete-product-footer {
+  margin-top: 4rem;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.title-delete-product {
+  margin-top: 1rem;
 }
