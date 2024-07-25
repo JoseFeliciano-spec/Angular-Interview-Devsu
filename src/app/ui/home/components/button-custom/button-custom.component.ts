@@ -11,6 +11,7 @@ export class ButtonCustomComponent {
   @Input() label: string = '';
   @Input() style: object = {};
   @Input() onClick!: () => void;
+  @Input() isDisabled: boolean = false;
 
   handleClick() {
     if (this.onClick) {

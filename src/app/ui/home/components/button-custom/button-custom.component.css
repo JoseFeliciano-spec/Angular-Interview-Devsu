@@ -30,3 +30,7 @@ button {
 button:active {
   filter: brightness(0.8);
 }
+button:disabled{
+  cursor: not-allowed;
+  filter: brightness(0.7);
+}

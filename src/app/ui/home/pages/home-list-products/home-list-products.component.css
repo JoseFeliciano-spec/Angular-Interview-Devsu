@@ -6,6 +6,16 @@ main {
   align-items: center;
 }
 
+option {
+  padding: 0.5rem;
+  filter: brightness(0.7);
+}
+
+option:hover {
+  background-color: #f5df66;
+  filter: brightness(1);
+}
+
 .wrapper-parent {
   min-width: 400px;
   width: max-content;

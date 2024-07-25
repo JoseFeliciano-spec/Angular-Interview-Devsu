@@ -45,6 +45,12 @@
             <td>
               {{ item.date_revision }}
             </td>
+            <td>
+              <action-popper [id]="'popper_' + $index"> 
+                <option value="">Actualizar</option>
+                <option value="">Eliminar</option>
+              </action-popper>
+            </td>
           </tr>
           } }
         </tbody>

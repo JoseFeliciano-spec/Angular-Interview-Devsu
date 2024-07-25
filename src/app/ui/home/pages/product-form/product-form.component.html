@@ -45,6 +45,7 @@
       <div style="width: max-content">
         <button-custom
           label="Reiniciar"
+          [onClick]="onReset"
           [style]="{
             padding: '1rem 1.3rem 1rem 1.3rem',
             background: '#eaecf2'
@@ -54,6 +55,7 @@
       <div style="width: max-content">
         <button-custom
           [onClick]="onSubmit"
+          [isDisabled]="this.form.invalid || this.notRepeatId"
           label="Enviar"
           [style]="{ padding: '1rem 1.3rem 1rem 1.3rem' }"
         ></button-custom>

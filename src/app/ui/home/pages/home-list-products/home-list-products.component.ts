@@ -5,11 +5,17 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ProductsStore } from '@/app/ui/store/products.store';
 import { InputCustomComponent } from '@/app/ui/home/components/input-custom/input-custom.component';
 import { ButtonCustomComponent } from '@/app/ui/home/components/button-custom/button-custom.component';
+import { ActionPopperComponent } from '@/app/ui/home/components/action-popper/action-popper.component';
 
 @Component({
   selector: 'app-home-list-products',
   standalone: true,
-  imports: [InputCustomComponent, ButtonCustomComponent, ReactiveFormsModule],
+  imports: [
+    InputCustomComponent,
+    ButtonCustomComponent,
+    ActionPopperComponent,
+    ReactiveFormsModule,
+  ],
   templateUrl: './home-list-products.component.html',
   styleUrl: './home-list-products.component.css',
 })

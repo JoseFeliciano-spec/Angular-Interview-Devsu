@@ -127,7 +127,11 @@ export class ProductFormComponent {
   }
 
   onSubmit = () => {
-    console.log(this.form.get('id')?.value);
+    this.productServices.createProduct(this.form.value).subscribe((data) => {
+      alert(data?.message);
+      this.form.reset();
+      this.productStore.loadProducts(null);
+    });
   };
 
   onBlur = () => {
@@ -140,20 +144,11 @@ export class ProductFormComponent {
     });
   };
 
+  onReset = () => {
+    this.form.reset();
+  };
+
   onClick = () => {
     this.router.navigateByUrl('');
   };
-
-  /* onChange = (e: any): void => {
-    console.log(e);
-    let dict = {};
-    if (this.productStore.formProducts) {
-      dict = { ...this.productStore.formProducts() };
-    }
-
-    this.productStore.setValue('formProducts', {
-      ...dict,
-      [e.target.name]: { value: e.target.value },
-    });
-  }; */
 }

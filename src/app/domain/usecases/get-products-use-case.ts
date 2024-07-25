@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
 import { ProductGateway } from '@/app/domain/models/Products/gateway/product-gateway';
 import { Observable } from 'rxjs';
-import { iProductResponse } from '@/app/domain/models/Products/Products';
+import {
+  iProductResponse,
+  Product,
+  iProductCreateResponse,
+} from '@/app/domain/models/Products/Products';
 
 @Injectable({
   providedIn: 'root',
@@ -15,5 +19,9 @@ export class GetProductsCase {
 
   getIdProduct(id: string): Observable<boolean> {
     return this._productGateway.getIdProduct(id);
+  }
+
+  createProduct(product: Product): Observable<iProductCreateResponse> {
+    return this._productGateway.createProduct(product);
   }
 }

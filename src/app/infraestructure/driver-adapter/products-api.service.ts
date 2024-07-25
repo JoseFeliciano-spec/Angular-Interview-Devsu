@@ -1,4 +1,8 @@
-import { iProductResponse } from '@/app/domain/models/Products/Products';
+import {
+  iProductResponse,
+  iProductCreateResponse,
+  Product,
+} from '@/app/domain/models/Products/Products';
 import { ProductGateway } from '@/app/domain/models/Products/gateway/product-gateway';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -18,5 +22,9 @@ export class ProductsApiService extends ProductGateway {
 
   getIdProduct(id: string): Observable<boolean> {
     return this.http.get<boolean>(`/api/bp/products/verification/${id}`);
+  }
+
+  createProduct(product: Product): Observable<iProductCreateResponse> {
+    return this.http.post<iProductCreateResponse>('/api/bp/products', product);
   }
 }
