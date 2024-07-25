@@ -28,7 +28,7 @@
           @if (this.productStore.status() === "Loading") {
           <span>Cargando...</span>
           } @else if (this.productStore.status() === "Loaded") { @for (item of
-          this.productStore.productsList(); track $index) {
+          paginatedItems; track $index) {
           <tr>
             <td>
               {{ item.logo }}
@@ -59,9 +59,51 @@
           } }
         </tbody>
       </table>
+
+      <div class="footer-table">
+        <p>Resultados</p>
+        <div class="controls-pagination">
+          <button-custom
+            label="Anterior"
+            [onClick]="prevPage"
+            [isDisabled]="currentPage === 1"
+            [style]="{
+              padding: '1rem 1.3rem 1rem 1.3rem',
+              background: '#eaecf2'
+            }"
+          ></button-custom>
+          <span>Página {{ currentPage }} de {{ totalPages }}</span>
+          <button-custom
+            label="Siguiente"
+            [onClick]="nextPage"
+            [isDisabled]="currentPage === totalPages"
+            [style]="{
+              padding: '1rem 1.3rem 1rem 1.3rem',
+              background: '#eaecf2'
+            }"
+          ></button-custom>
+        </div>
+        <form [formGroup]="form">
+          <select
+            (change)="onChangePageSizeSelect()"
+            formControlName="changePageSizes"
+          >
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+          </select>
+        </form>
+      </div>
     </div>
   </div>
 </main>
+
+<code>
+  <pre>
+  {{ form.value | json }}
+</pre
+  >
+</code>
 
 <modal [isOpen]="modalIsOpen" (close)="closeModal()">
   <div class="content-delete-product">

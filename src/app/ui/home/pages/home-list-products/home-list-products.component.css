@@ -75,3 +75,23 @@ option:hover {
 .title-delete-product {
   margin-top: 1rem;
 }
+
+.footer-table {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+select {
+  width: 60px;
+  padding: 0.5rem 0.3rem 0.5rem 0.6rem;
+}
+
+.controls-pagination {
+  gap: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -9,12 +9,13 @@ import {
 import { JsonPipe } from '@angular/common';
 import dayjs from 'dayjs';
 import { Observable } from 'rxjs';
+import { AbstractControl } from '@angular/forms';
 import { InputCustomComponent } from '@/app/ui/home/components/input-custom/input-custom.component';
 import { ButtonCustomComponent } from '@/app/ui/home/components/button-custom/button-custom.component';
 import { ProductsStore } from '@/app/ui/store/products.store';
 import { unstructuredErrors } from '@/app/ui/utils/unstructuredErrors';
 import { GetProductsCase } from '@/app/domain/usecases/get-products-use-case';
-import { Product } from '@/app/domain/models/Products/Products';
+import { previousDaysValidators } from '@/app/ui/utils/previousDaysValidators';
 
 @Component({
   selector: 'app-product-form',
@@ -60,9 +61,10 @@ export class ProductFormComponent implements OnInit {
       ])
     ),
     logo: new FormControl('', [Validators.required]),
-    date_release: new FormControl(dayjs().format('YYYY-MM-DD'), [
-      Validators.required,
-    ]),
+    date_release: new FormControl(
+      dayjs().format('YYYY-MM-DD'),
+      Validators.compose([Validators.required, previousDaysValidators])
+    ),
     date_revision: new FormControl(dayjs().format('YYYY-MM-DD')),
   });
 
@@ -132,6 +134,8 @@ export class ProductFormComponent implements OnInit {
   get errorsDateRelease() {
     const variablesError: any = {
       required: 'Este campo es requerido',
+      longerdate:
+        'La fecha de este campo debe ser mayor o igual que la fecha actual',
     };
     return unstructuredErrors({
       variablesError,
@@ -177,6 +181,14 @@ export class ProductFormComponent implements OnInit {
 
     this.response.subscribe((data) => {
       this.notRepeatId = data;
+    });
+  };
+
+  onBlurChangeDateRevision = () => {
+    let dateRelease = this.form.get('date_release')?.value ?? '';
+    const dateNextYear = dayjs(dateRelease).add(1, 'year').format('YYYY-MM-DD');
+    this.form.patchValue({
+      date_revision: dateNextYear,
     });
   };
 
