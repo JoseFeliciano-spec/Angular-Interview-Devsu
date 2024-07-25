@@ -15,6 +15,10 @@ Antes de comenzar, asegúrate de tener instalado lo siguiente:
 - npm (versión X.X.X o superior)
 - Angular CLI (versión X.X.X)
 
+## Instalación de dependencias
+
+Ejecute `npm i` para la instalación de todas las dependencias que se usan en el proyecto como dayjs y ngrx/signals.
+
 ## Servidor de desarrollo
 
 Ejecute `ng serve` para un servidor de desarrollo. Navegue hasta `http://localhost:4200/`. La aplicación se recargará automáticamente si cambias alguno de los archivos fuente.
