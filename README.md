@@ -1,27 +1,23 @@
-# AngularInterviewDev
+# Proyecto de Entrevista Angular - DevSu Clean Code
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.8.
+Este repositorio contiene una prueba técnica para la empresa DevSu. Sin embargo, puede ser utilizado como ejemplo de un proyecto Angular que implementa arquitectura de código limpio y utiliza NgRx/Signals para el manejo de estado. ¡Espero que lo encuentres útil!
 
-## Development server
+## Características
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Arquitectura de Código Limpio
+- NgRx/Signals para manejo de estado
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Prerrequisitos
 
-## Build
+Antes de comenzar, asegúrate de tener instalado lo siguiente:
+- Node.js (versión X.X.X o superior)
+- npm (versión X.X.X o superior)
+- Angular CLI (versión X.X.X)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Servidor de desarrollo
 
-## Running unit tests
+Ejecute `ng serve` para un servidor de desarrollo. Navegue hasta `http://localhost:4200/`. La aplicación se recargará automáticamente si cambias alguno de los archivos fuente.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Contacto
+Si tienes alguna pregunta o sugerencia, no dudes en contactarme en el siguiente correo `janayasimanca@gmai.com`.
